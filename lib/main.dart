@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:timer_state_managment/counter.dart';
 import 'package:timer_state_managment/home.dart';
 
 void main() {
@@ -11,8 +13,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-     home: HomeScreen(),
-    );
+    // Add provider at the root of the App
+    // it will listen for all changes that will
+    // occur inside the app
+   return ChangeNotifierProvider(
+       create: (context) => Counter(),
+     child: Builder(
+       builder: (BuildContext context){
+         return const MaterialApp(
+           home: HomeScreen(),
+         );
+       },
+     ),
+   );
   }
 }
