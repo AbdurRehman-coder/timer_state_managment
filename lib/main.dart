@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     // it will listen for all changes that will
     // occur inside the app
    return ChangeNotifierProvider(
-       create: (context) => Counter(),
+       create: (_) => Counter(),
      child: Builder(
        builder: (BuildContext context){
          return const MaterialApp(

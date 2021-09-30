@@ -10,7 +10,7 @@ class Counter with ChangeNotifier{
 
   // method that will increment the counter
   // and also set the state through NotifyListener
- void addCounter(){
+ void increment(){
    _counter++;
    //this listener works like setState
    notifyListeners();
