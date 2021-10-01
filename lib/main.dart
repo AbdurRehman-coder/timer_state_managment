@@ -4,7 +4,14 @@ import 'package:timer_state_managment/counter.dart';
 import 'package:timer_state_managment/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+   MultiProvider(
+     providers: [
+       ChangeNotifierProvider(create: (context) => Counter())
+     ],
+     child: const MyApp(),
+   )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,15 +23,20 @@ class MyApp extends StatelessWidget {
     // Add provider at the root of the App
     // it will listen for all changes that will
     // occur inside the app
-   return ChangeNotifierProvider(
-       create: (_) => Counter(),
-     child: Builder(
-       builder: (BuildContext context){
-         return const MaterialApp(
-           home: HomeScreen(),
-         );
-       },
-     ),
-   );
+
+    return MaterialApp(
+      home: HomeScreen(),
+    );
+    /* Another way for providing root level provider */
+   // return ChangeNotifierProvider(
+   //     create: (_) => Counter(),
+   //   child: Builder(
+   //     builder: (BuildContext context){
+   //       return const MaterialApp(
+   //         home: HomeScreen(),
+   //       );
+   //     },
+   //   ),
+   // );
   }
 }
